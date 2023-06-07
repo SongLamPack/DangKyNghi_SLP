@@ -1,0 +1,130 @@
+.noteDate {
+  font-size: 13px;
+  color: #808080;
+  align-items: center;
+  width: 100%;
+  margin-left: 140px;
+}
+.logo {
+  width: 55px;
+  height: 55px;
+}
+body {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 1px;
+}
+#btnGui {
+  font-size: 14px;
+  background-color: rgb(8, 125, 243);
+  margin-left: 120px;
+}
+#quytrinh {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.done {
+  color: green;
+}
+.fal {
+  color: red;
+}
+.wait {
+  color: chocolate;
+}
+.item {
+  display: flex;
+  gap: 20px;
+}
+.tieude {
+  font-size: 22px;
+  color: blue;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 8px;
+}
+.inputbox {
+  font-size: 16px;
+  text-align: center;
+}
+
+p {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  width: 100%;
+}
+.back {
+  background-color: darkgoldenrod;
+  font-size: 14px;
+  padding: 3px 8px;
+  margin-left: 0px;
+  margin-bottom: 5px;
+}
+button {
+  outline: none;
+  border: none;
+  font-size: 16px;
+  background-color: SeaGreen;
+  color: aliceblue;
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+button:hover {
+  opacity: 0.8;
+}
+
+/* modal */
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background-color: beige;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  display: none;
+}
+
+.display {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.bodydangky * {
+  font-size: 16px;
+  margin-bottom: 5px;
+  height: 25px;
+}
+#btnGui {
+  font-size: 15px;
+  height: 30px;
+}
+.maNV {
+  background-color: rgb(255, 255, 219);
+}
+.label {
+  font-size: 13px;
+  color: darkgreen;
+  margin-left: 25px;
+}
+.checkTime {
+  height: 18px;
+  width: 18px;
+}
+
+
+/*# sourceMappingURL=/styles.dd855970.css.map */

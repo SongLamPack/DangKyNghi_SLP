@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Đăng ký nghỉ SongLam</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="./src/styles.css" />
+  </head>
+  <body>
+    <!-- bảng chào mừng -->
+    <section id="welcome">
+      <img
+        src="http://drive.google.com/uc?export=view&id=1i0G3-DqnwstwRDUSVZdgFT4buuw_jua2"
+        class="logo"
+        alt="SongLamPack"
+      />
+      <h2 class="tieude">ĐĂNG KÝ NGÀY NGHỈ</h2>
+      <a id="quytrinh" target="_blank" href="https://docs.google.com/spreadsheets/d/1PdBOUfB5gV6z2M2ipeqRnDVffmIHBBkgdSJ5HL-O9gw/edit#gid=651362643">Quy trình đăng ký nghỉ</a>
+      <br/><br/>
+      <button id="showDk">Đăng ký nghỉ</button>
+      <button id="showXem">Tra cứu thông tin</button>
+      <h4 class="noteDate">Bản thử nghiệm</h4>
+    </section>
+    <hr />
+    <!-- đăng ký nghỉ -->
+    <section id="dangkypage" class="hidden">
+      <button class="back">Home</button>
+      <h1 class="tieude">ĐĂNG KÝ MỚI</h1>
+      <div class ="bodydangky">
+        <input class="maNV" type="text" placeholder="Mã nhân viên" size = "11"/>
+        <input class="tenNV" type="text" placeholder="Tên nhân viên" disabled />
+        <br>
+        <input class="boPhan wait" type="text" placeholder="Bộ phận" disabled size = "11" />
+        <input class="chucVu wait" type="text" placeholder="Chức vụ" disabled />
+        <!-- <input class="nhom" type="text" placeholder="Nhóm" hidden /> -->
+        <br>
+        <label class="label">Nghỉ từ ngày ____ Đến hết ngày</label><br />
+        <input class="TuNgay" type="date" />
+        <input class="DenNgay" type="date" />
+        <br>
+        <label class="label">Khoảng thời gian nghỉ (nghỉ dưới 1 ngày)</label>
+        <br>
+        <input class="checkTime" type="checkbox" name="" value ="true"/>
+        <input class="NghiTu" type="time" value="" disabled/>
+        <input class="NghiDen" type="time" value="" disabled/>
+        <br>
+        <select class="cheDoNghi">
+          <option value="Nghỉ phép">Nghỉ phép</option>
+          <option value="Có lý do, nghỉ không lương">Có lý do, nghỉ không lương</option>
+          <option value="Nghỉ bảo hiểm">Nghỉ bảo hiểm</option>
+          <option value="Nghỉ con nhỏ">Nghỉ con nhỏ</option>
+          <option value="Nghỉ thai trên 7 tháng">Nghỉ thai trên 7 tháng</option>
+          <option value="Nghỉ ma chay">Nghỉ ma chay</option>
+          <option value="Nghỉ cưới">Nghỉ cưới</option>
+          <option value="Nghỉ đặc biệt">Nghỉ đặc biệt</option>
+          <option value="Nghỉ thai sản">Nghỉ thai sản</option>
+          <option value="Doanh Nghiệp">Doanh Nghiệp</option>
+          <option value="Đi muộn">Đi muộn</option>
+          <option value="Về sớm">Về sớm</option>
+        </select>
+        <br>
+        <input class="ghiChu" type="text" placeholder="Ghi chú" size = "22" />
+        <br>
+        <div id="dsquanly">
+          <!-- <select class="quanly" placeholder="Ghi chú">
+            <option value="">- Chọn tổ trưởng / quản lý -</option>
+          </select> -->
+        </div>
+        <br>
+        <button id="btnGui">Gửi đăng ký</button>
+        <div id="resultHTML"></div>
+      </div>
+      <div>
+        <!-- trả ra thông tin của nhân viên -->
+      </div>
+    </section>
+
+    <section id="xempage" class="hidden">
+      <button class="back">Home</button>
+      <div>
+          <h1 class="tieude">KIỂM TRA KẾT QUẢ ĐĂNG KÝ</h1>
+          <div>
+            <label class="noteDate">Nhập ngày bắt đầu nghỉ</label><br />
+            <input
+              class="inputbox"
+              type="text"
+              id="myid"
+              placeholder="Mã nhân viên"
+              size="11"
+            />
+            <input type="date" id="mydate" class="inputbox" />
+            <button id="btn">Xem thông tin</button><br />
+      </div>
+      <div>
+        <!-- <p>trả ra kết quả đăng ký</p> -->
+      <div id="result"></div>
+      </div>
+    </section>
+    <div class="modal"><h2>Đang chạy...</h2></div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
+
+<!-- trả ra thông tin của nhân viên -->
+        <!-- <h1 class="tieude">THÔNG TIN ĐĂNG KÝ NGHỈ</h1>
+    <div>
+      <button id="btn">Xem thông tin</button><br />
+      <input
+        class="inputbox"
+        type="text"
+        id="myid"
+        placeholder="Mã nhân viên"
+        size="11"
+      />
+      <input type="date" id="mydate" class="inputbox" />
+      <label class="noteDate">Nhập ngày bắt đầu nghỉ</label><br />
+    </div>
+    <div id="result"></div> -->
