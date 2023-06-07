@@ -1,7 +1,7 @@
 // khai bao const
 
 const URL =
-  "https://script.google.com/macros/s/AKfycbwItnA9ne4r9u1qfQl9yGUZkFW99Wlq9HfksPYEyyLIuC-GQrClc7nSO0vSOrQHkU8UYQ/exec";
+  "https://script.google.com/macros/s/AKfycbzrxfDd_4temHHlKyPvTbVOV-ivdTme8f6XKbQMgg4JB-bEtGvOKnUMjUfrWTt21U4lPA/exec";
 
 // khai bao bien
 
@@ -193,19 +193,12 @@ manvIp.addEventListener("input", (e) => {
       boPhanIp.value = nv.BoPhan;
       chucVuIp.value = nv.ChucVu;
       var dsql = [];
-      if (nv.CapDuyet === "") {
         dsql = dsns.filter(
           (rs) =>
             rs.BoPhan.toLowerCase() === boPhanIp.value.toLowerCase() &&
             rs.CapDuyet !== ""
         );
-      } else {
-        dsql = dsns.filter(
-          (rs) =>
-            rs.Nhom.toLowerCase() === nv.Nhom.toLowerCase() &&
-            rs.CapDuyet.toLowerCase() === "trưởng bộ phận"
-        );
-      }
+
       if (dsql.length > 0) {
         var innerSelect = `<select id="chonTT" class="chonquanly" >
         <option value="">- Chọn tổ trưởng / quản lý -</option>`;
