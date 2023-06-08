@@ -176,6 +176,7 @@ const nhomIp = document.querySelector("#dangkypage .nhom");
 const resultSel = document.getElementById("dsquanly");
 
 manvIp.addEventListener("input", (e) => {
+  manvIp.value = manvIp.value.toUpperCase();
   if (manvIp.value.length >= 7) {
     const nv = dsns.find(
       (nv) => nv.MaNV.toLowerCase() === manvIp.value.toLowerCase()
