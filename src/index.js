@@ -1,7 +1,7 @@
 // khai bao const
 
 const URL =
-  "https://script.google.com/macros/s/AKfycbwAmD2wY7lC8sSGOBDX_JtU_H7A7hatgH5nE_QB-oe1tOp4V5awq7gkanLUuDcyH318PQ/exec";
+  "https://script.google.com/macros/s/AKfycbwc9IDgaXhfBmXiUBrCZs_NtqxUTZpG_1O94Ab1wS-N2EnCoyChaM9YzMaqHMekebfScA/exec";
 
 // khai bao bien
 
@@ -251,7 +251,7 @@ const btnGui = document.getElementById("btnGui");
 btnGui.addEventListener("click", (e) => {
   e.preventDefault();
   const itime = new Date();
-  var dauThoiGian = `${itime.getDate()}/${itime.getMonth()}/${itime.getFullYear()} ${itime.getHours()}:${itime.getMinutes()}:00`;
+  var dauThoiGian = `${itime.getDate()}/${itime.getMonth()+1}/${itime.getFullYear()} ${itime.getHours()}:${itime.getMinutes()}:00`;
 
   let quanlyId = document.getElementById("chonTT");
   if (quanlyId != null) {
