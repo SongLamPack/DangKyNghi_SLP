@@ -28,6 +28,7 @@ function render(data) {
     } </h2>
         <p>${data[0].MaNV}: ${data[i].MaNV}</p>
         <p>${data[0].HoTen}: ${data[i].HoTen}</p>
+        <p>${data[0].BoPhan}: ${data[i].BoPhan}</p>
         <p>${data[0].TuNgay}: ${data[i].TuNgay}</p>
         <p>${data[0].DenNgay}: ${data[i].DenNgay}</p>
         <p>${data[0].SoNgayNghi}: ${data[i].SoNgayNghi}</p>
