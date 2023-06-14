@@ -73,17 +73,17 @@ btn.addEventListener("click", (e) => {
     type: "check",
     data: {
       name,
-      idate
-    }
+      idate,
+    },
   };
   modal.classList.add("display");
   console.log(submitData);
   fetch(URL, {
     method: "POST",
     headers: {
-      "Content-Type": "text/plain;charset=utf-8"
+      "Content-Type": "text/plain;charset=utf-8",
     },
-    body: JSON.stringify(submitData) // p data type must match "Content-Type" header
+    body: JSON.stringify(submitData), // p data type must match "Content-Type" header
   })
     .then((response) => {
       return response.json();
@@ -142,16 +142,16 @@ backBtns.forEach((back) =>
 
 const fetchDs = (e) => {
   let submitData = {
-    type: "dangky"
+    type: "dangky",
   };
 
   modal.classList.add("display");
   fetch(URL, {
     method: "POST",
     headers: {
-      "Content-Type": "text/plain;charset=utf-8"
+      "Content-Type": "text/plain;charset=utf-8",
     },
-    body: JSON.stringify(submitData) // p data type must match "Content-Type" header
+    body: JSON.stringify(submitData), // p data type must match "Content-Type" header
   })
     .then((response) => {
       return response.json();
@@ -195,11 +195,11 @@ manvIp.addEventListener("input", (e) => {
       boPhanIp.value = nv.BoPhan;
       chucVuIp.value = nv.ChucVu;
       var dsql = [];
-        dsql = dsns.filter(
-          (rs) =>
-            rs.BoPhan.toLowerCase() === boPhanIp.value.toLowerCase() &&
-            rs.CapDuyet !== ""
-        );
+      dsql = dsns.filter(
+        (rs) =>
+          rs.BoPhan.toLowerCase() === boPhanIp.value.toLowerCase() &&
+          rs.CapDuyet !== ""
+      );
 
       if (dsql.length > 0) {
         var innerSelect = `<select id="chonTT" class="chonquanly" >
@@ -227,6 +227,7 @@ const tuNgayIp = document.querySelector("#dangkypage .TuNgay");
 const denNgayIp = document.querySelector("#dangkypage .DenNgay");
 const nghiTuIp = document.querySelector("#dangkypage .NghiTu");
 const nghiDenIp = document.querySelector("#dangkypage .NghiDen");
+const soGioPhutIP = document.querySelector("#dangkypage .SoGioPhut");
 const cheDoNghi = document.querySelector("#dangkypage .cheDoNghi");
 const ghiChu = document.querySelector("#dangkypage .ghiChu");
 const resultHTML = document.getElementById("resultHTML");
@@ -248,12 +249,30 @@ checkTimeIp.addEventListener("change", (e) => {
   }
 });
 
+nghiTuIp.addEventListener("change", tinh_so_gio);
+nghiDenIp.addEventListener("change", tinh_so_gio);
+
+function tinh_so_gio() {
+  var hmin = nghiTuIp.value.toString().split(":");
+  var hmax = nghiDenIp.value.toString().split(":");
+  if (parseInt(hmax[1]) >= parseInt(hmin[1])) {
+    var soGio = parseInt(hmax[0]) - parseInt(hmin[0]);
+    var soPhut = parseInt(hmax[1]) - parseInt(hmin[1]);
+  } else {
+    var soGio = parseInt(hmax[0]) - parseInt(hmin[0]) - 1;
+    var soPhut = 60 + parseInt(hmax[1]) - parseInt(hmin[1]);
+  }
+  soGioPhutIP.value = `${soGio} giờ ${soPhut} ph`;
+}
+
 //gui dang ky
 const btnGui = document.getElementById("btnGui");
 btnGui.addEventListener("click", (e) => {
   e.preventDefault();
   const itime = new Date();
-  var dauThoiGian = `${itime.getDate()}/${itime.getMonth()+1}/${itime.getFullYear()} ${itime.getHours()}:${itime.getMinutes()}:00`;
+  var dauThoiGian = `${itime.getDate()}/${
+    itime.getMonth() + 1
+  }/${itime.getFullYear()} ${itime.getHours()}:${itime.getMinutes()}:00`;
 
   let quanlyId = document.getElementById("chonTT");
   if (quanlyId != null) {
@@ -312,17 +331,17 @@ btnGui.addEventListener("click", (e) => {
       NghiTu: nghiTuIp.value,
       NghiDen: nghiDenIp.value,
       GhiChu: ghiChu.value,
-      QuanLy: ngduyet
-    }
+      QuanLy: ngduyet,
+    },
   };
   modal.classList.add("display");
   console.log(submitData);
   fetch(URL, {
     method: "POST",
     headers: {
-      "Content-Type": "text/plain;charset=utf-8"
+      "Content-Type": "text/plain;charset=utf-8",
     },
-    body: JSON.stringify(submitData) // p data type must match "Content-Type" header
+    body: JSON.stringify(submitData), // p data type must match "Content-Type" header
   })
     .then((response) => {
       return response.json();
