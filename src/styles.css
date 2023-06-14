@@ -109,6 +109,12 @@ button:hover {
   margin-bottom: 5px;
   height: 25px;
 }
+
+#SoGioPhutID {
+  font-size: 13px;
+  margin-bottom: 1px;
+}
+
 #btnGui {
   font-size: 15px;
   height: 30px;
