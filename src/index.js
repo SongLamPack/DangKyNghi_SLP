@@ -240,12 +240,14 @@ checkTimeIp.addEventListener("change", (e) => {
     denNgayIp.disabled = true;
     nghiTuIp.value = "08:00";
     nghiDenIp.value = "17:00";
+    soGioPhutIP.value = "9 giờ 0 ph"
   } else {
     nghiTuIp.disabled = true;
     nghiDenIp.disabled = true;
     denNgayIp.disabled = false;
     nghiTuIp.value = "";
     nghiDenIp.value = "";
+    soGioPhutIP.value ="";
   }
 });
 
