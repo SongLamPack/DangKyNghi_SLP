@@ -185,12 +185,12 @@ manvIp.addEventListener("input", (e) => {
     if (!nv) {
       tenIp.value = "không tìm thấy";
       tenIp.classList.add("fal");
-      tenIp.classList.remove("wait");
+      tenIp.classList.remove("done");
       boPhanIp.value = "";
       chucVuIp.value = "";
     } else {
       tenIp.classList.remove("fal");
-      tenIp.classList.add("wait");
+      tenIp.classList.add("done");
       tenIp.value = nv.HoTen;
       boPhanIp.value = nv.BoPhan;
       chucVuIp.value = nv.ChucVu;
