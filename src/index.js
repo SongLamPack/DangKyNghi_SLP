@@ -1,7 +1,7 @@
 // khai bao const
 
 const URL =
-  "https://script.google.com/macros/s/AKfycbzzZt112AxP1kq80KnP3WZDaeqmhyj2Y9BcYOKpUbe-dGPQ8tjNJCVOAMN8E2bGjqY13g/exec";
+  "https://script.google.com/macros/s/AKfycbxMYFiFDBXoetmt6_neUNvdDxp3XyxAZTkVy3JBHJAzrRkuhSWv8YRnvF2wZ05lVAnS8g/exec";
 
 // khai bao bien
 
@@ -16,10 +16,10 @@ function render(data) {
   var innerHtml = "";
   for (var i = 1; i < data.length; i++) {
     innerHtml += `
-    <div class="render">
+    <div class="render" style="padding:20px">
         <h2 class ="${
           data[i].KetQua === 1 ? "done" : data[i].KetQua === -1 ? "fal" : "wait"
-        }"> ${
+        }" style="text-align:center; margin:0; padding-bottom:20px"> ${
       data[i].KetQua === 1
         ? "ĐƯỢC DUYỆT"
         : data[i].KetQua === -1
@@ -42,18 +42,24 @@ function render(data) {
             : data[i].QLDuyet === "Không"
             ? "fal"
             : "wait"
-        }">${data[0].QuanLy}: ${data[i].QuanLy} _${data[i].QLDuyet}</p>
+        }">${data[0].QuanLy}: ${data[i].QuanLy} [${data[i].QLDuyet}]</p>
         <p class="${
           data[i].TBPDuyet === "Duyệt"
             ? "done"
             : data[i].TBPDuyet === "Không"
             ? "fal"
             : "wait"
-        }">${data[0].TruongBP}: ${data[i].TruongBP} _${data[i].TBPDuyet}</p>
+        }">${data[0].TruongBP}: ${data[i].TruongBP} [${data[i].TBPDuyet}]</p>
+        <p class="${
+          data[i].KHDuyet === "Duyệt"
+            ? "done"
+            : data[i].KHDuyet === "Không"
+            ? "fal"
+            : "wait"
+        }">${data[0].KHSX}: ${data[i].KHSX} [${data[i].KHDuyet}]</p>
         <p>${data[0].LyDo}: ${data[i].LyDo}</p>
     </div>
     <br>
-    <hr />
     `;
   }
   resultEle.innerHTML = innerHtml;
@@ -73,17 +79,17 @@ btn.addEventListener("click", (e) => {
     type: "check",
     data: {
       name,
-      idate,
-    },
+      idate
+    }
   };
   modal.classList.add("display");
   console.log(submitData);
   fetch(URL, {
     method: "POST",
     headers: {
-      "Content-Type": "text/plain;charset=utf-8",
+      "Content-Type": "text/plain;charset=utf-8"
     },
-    body: JSON.stringify(submitData), // p data type must match "Content-Type" header
+    body: JSON.stringify(submitData) // p data type must match "Content-Type" header
   })
     .then((response) => {
       return response.json();
@@ -142,16 +148,16 @@ backBtns.forEach((back) =>
 
 const fetchDs = (e) => {
   let submitData = {
-    type: "dangky",
+    type: "dangky"
   };
 
   modal.classList.add("display");
   fetch(URL, {
     method: "POST",
     headers: {
-      "Content-Type": "text/plain;charset=utf-8",
+      "Content-Type": "text/plain;charset=utf-8"
     },
-    body: JSON.stringify(submitData), // p data type must match "Content-Type" header
+    body: JSON.stringify(submitData) // p data type must match "Content-Type" header
   })
     .then((response) => {
       return response.json();
@@ -240,14 +246,14 @@ checkTimeIp.addEventListener("change", (e) => {
     denNgayIp.disabled = true;
     nghiTuIp.value = "08:00";
     nghiDenIp.value = "17:00";
-    soGioPhutIP.value = "9 giờ 0 ph"
+    soGioPhutIP.value = "9 giờ 0 ph";
   } else {
     nghiTuIp.disabled = true;
     nghiDenIp.disabled = true;
     denNgayIp.disabled = false;
     nghiTuIp.value = "";
     nghiDenIp.value = "";
-    soGioPhutIP.value ="";
+    soGioPhutIP.value = "";
   }
 });
 
@@ -333,17 +339,17 @@ btnGui.addEventListener("click", (e) => {
       NghiTu: nghiTuIp.value,
       NghiDen: nghiDenIp.value,
       GhiChu: ghiChu.value,
-      QuanLy: ngduyet,
-    },
+      QuanLy: ngduyet
+    }
   };
   modal.classList.add("display");
   console.log(submitData);
   fetch(URL, {
     method: "POST",
     headers: {
-      "Content-Type": "text/plain;charset=utf-8",
+      "Content-Type": "text/plain;charset=utf-8"
     },
-    body: JSON.stringify(submitData), // p data type must match "Content-Type" header
+    body: JSON.stringify(submitData) // p data type must match "Content-Type" header
   })
     .then((response) => {
       return response.json();
