@@ -18,8 +18,8 @@ body {
   margin: 1px;
 }
 #btnGui {
-  font-size: 14px;
-  background-color: rgb(8, 125, 243);
+  font-size: 16px;
+  /* background-color: rgb(8, 125, 243); */
   margin-left: 120px;
 }
 #quytrinh {
@@ -58,25 +58,51 @@ p {
   width: 100%;
 }
 .back {
-  background-color: darkgoldenrod;
+  background-color: goldenrod;
   font-size: 14px;
   padding: 3px 8px;
   margin-left: 0px;
   margin-bottom: 5px;
 }
 button {
-  outline: none;
+  height: 30px;
+  font-size: 14px;
+  margin: 3px;
+  border-radius: 3px;
+  font-weight: bold;
+  background: #1aab8a;
+  color: #fff;
   border: none;
-  font-size: 16px;
-  background-color: SeaGreen;
-  color: aliceblue;
-  padding: 5px 15px;
-  border-radius: 5px;
+  position: relative;
   cursor: pointer;
-  margin-left: 5px;
+  transition: 800ms ease all;
+  outline: none;
 }
 button:hover {
-  opacity: 0.8;
+  background: #fff;
+  color: #1aab8a;
+}
+button:before,
+button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #1aab8a;
+  transition: 400ms ease all;
+}
+button:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+button:hover:before,
+button:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
 }
 
 /* modal */
@@ -130,4 +156,8 @@ button:hover {
 .checkTime {
   height: 18px;
   width: 18px;
+}
+
+.render {
+  border-style: ridge;
 }
