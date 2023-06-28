@@ -1,7 +1,7 @@
 // khai bao const
 
 const URL =
-  "https://script.google.com/macros/s/AKfycbzCwujeAczyzD9rUw0NpvKuNdOcb3NpzUD1IbfTqCQU3mE8lvOudz2l2t1eVZbeLqhrxw/exec";
+  "https://script.google.com/macros/s/AKfycbzzZt112AxP1kq80KnP3WZDaeqmhyj2Y9BcYOKpUbe-dGPQ8tjNJCVOAMN8E2bGjqY13g/exec";
 
 // khai bao bien
 
