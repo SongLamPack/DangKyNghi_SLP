@@ -1,7 +1,7 @@
 // khai bao const
 
 const URL =
-  "https://script.google.com/macros/s/AKfycbxMYFiFDBXoetmt6_neUNvdDxp3XyxAZTkVy3JBHJAzrRkuhSWv8YRnvF2wZ05lVAnS8g/exec";
+  "https://script.google.com/macros/s/AKfycbySh0mtfujArGmttLxLIjHP_l0AnLGrFwtlD-NP5FEV8J_aDUuZ2pVew40fuf_PQyCn4A/exec";
 
 // khai bao bien
 
@@ -246,7 +246,7 @@ checkTimeIp.addEventListener("change", (e) => {
     denNgayIp.disabled = true;
     nghiTuIp.value = "08:00";
     nghiDenIp.value = "17:00";
-    soGioPhutIP.value = "9 giờ 0 ph";
+    soGioPhutIP.value = "8 giờ 0 ph";
   } else {
     nghiTuIp.disabled = true;
     nghiDenIp.disabled = true;
@@ -261,16 +261,35 @@ nghiTuIp.addEventListener("change", tinh_so_gio);
 nghiDenIp.addEventListener("change", tinh_so_gio);
 
 function tinh_so_gio() {
-  var hmin = nghiTuIp.value.toString().split(":");
-  var hmax = nghiDenIp.value.toString().split(":");
-  if (parseInt(hmax[1]) >= parseInt(hmin[1])) {
-    var soGio = parseInt(hmax[0]) - parseInt(hmin[0]);
-    var soPhut = parseInt(hmax[1]) - parseInt(hmin[1]);
-  } else {
-    var soGio = parseInt(hmax[0]) - parseInt(hmin[0]) - 1;
-    var soPhut = 60 + parseInt(hmax[1]) - parseInt(hmin[1]);
+  // var hmin = nghiTuIp.value.toString().split(":");
+  // var hmax = nghiDenIp.value.toString().split(":");
+  // if (parseInt(hmax[1]) >= parseInt(hmin[1])) {
+  //   var soGio = parseInt(hmax[0]) - parseInt(hmin[0]);
+  //   var soPhut = parseInt(hmax[1]) - parseInt(hmin[1]);
+  // } else {
+  //   var soGio = parseInt(hmax[0]) - parseInt(hmin[0]) - 1;
+  //   var soPhut = 60 + parseInt(hmax[1]) - parseInt(hmin[1]);
+  // }
+  var nghitu = nghiTuIp.value;
+  var nghiden = nghiDenIp.value;
+  var tgTu = new Date(`0000-01-01 ${nghitu}`);
+  var tgDen = new Date(`0000-01-01 ${nghiden}`);
+  var tgNghi12 = new Date(`0000-01-01 12:00`);
+  var tgNghi13 = new Date(`0000-01-01 13:00`);
+  var tgNghi00 = new Date(`0000-01-01 00:00`);
+  var tgNghi01 = new Date(`0000-01-01 00:01`);
+  var tgNghi18 = new Date(`0000-01-01 18:00`);
+  var phutgiam1 = 0;
+  var phutgiam2 = 0;
+  if (tgTu <= tgNghi13 && tgDen >= tgNghi12) {
+    phutgiam1 = Math.min(60, ((((tgDen - tgTu) / 60000) % 1440) + 1440) % 1440);
   }
-  soGioPhutIP.value = `${soGio} giờ ${soPhut} ph`;
+  if ((tgTu <= tgNghi01 || tgTu >= tgNghi18) && tgDen >= tgNghi00) {
+    phutgiam2 = Math.min(60, ((((tgDen - tgTu) / 60000) % 1440) + 1440) % 1440);
+  }
+  var phuttamtinh = (tgDen - tgTu) / 60000;
+  var soPhut = (((phuttamtinh % 1440) + 1440) % 1440) - phutgiam1 - phutgiam2;
+  soGioPhutIP.value = `${Math.floor(soPhut / 60)} giờ ${soPhut % 60} ph`;
 }
 
 //gui dang ky
@@ -300,10 +319,9 @@ btnGui.addEventListener("click", (e) => {
     alert("Vui lòng nhập đầy đủ ngày tháng");
     return;
   }
-  if (
-    parseInt(tuNgayIp.value.toString().split("-").join("")) >
-    parseInt(denNgayIp.value.toString().split("-").join(""))
-  ) {
+  var tungay = parseInt(tuNgayIp.value.toString().split("-").join(""));
+  var denngay = parseInt(denNgayIp.value.toString().split("-").join(""));
+  if (tungay > denngay) {
     alert(
       "Ngày tháng không hợp lệ, ngày bắt đầu không được nhỏ hơn ngày kết thúc"
     );
@@ -314,18 +332,32 @@ btnGui.addEventListener("click", (e) => {
       alert("Đăng ký nghỉ dưới 01 ngày, vui lòng nhập khoảng thời gian");
       return;
     } else {
-      if (
-        parseInt(nghiTuIp.value.toString().split(":").join("")) >=
-        parseInt(nghiDenIp.value.toString().split(":").join(""))
-      ) {
+      if (parseInt(soGioPhutIP.value) >= 12) {
         alert(
-          "Đăng ký nghỉ dưới 01 ngày. Khoảng thời gian không hợp lệ, thời gian bắt đầu phải nhỏ hơn thời gian kết thúc"
+          "Đăng ký nghỉ dưới 01 ngày. Khoảng thời gian không hợp lệ, thời gian nghỉ vượt quá 12 giờ"
         );
         return;
       }
     }
   }
+  var startDate = new Date(tuNgayIp.value);
+  var endDate = new Date(denNgayIp.value);
+  var totalDays = 0;
+  while (startDate <= endDate) {
+    if (startDate.getDay() !== 0) {
+      totalDays++;
+    }
+    startDate.setDate(startDate.getDate() + 1);
+  }
 
+  var sogiophut = soGioPhutIP.value.split(" ");
+  console.log(sogiophut);
+  var SoNgayNghi =
+    parseInt(sogiophut[0]) > 0
+      ? Math.min(1, (parseInt(sogiophut[0]) + parseInt(sogiophut[2]) / 60) / 8)
+      : totalDays;
+
+  SoNgayNghi = Number.parseFloat(SoNgayNghi.toFixed(3));
   let submitData = {
     type: "themmoi",
     data: {
@@ -335,10 +367,12 @@ btnGui.addEventListener("click", (e) => {
       BoPhan: boPhanIp.value,
       TuNgay: tuNgayIp.value,
       DenNgay: denNgayIp.value,
-      CheDoNghi: cheDoNghi.value,
+      CheDoNghi: cheDoNghi.options[cheDoNghi.selectedIndex].textContent,
       NghiTu: nghiTuIp.value,
       NghiDen: nghiDenIp.value,
       GhiChu: ghiChu.value,
+      SoNgayNghi: SoNgayNghi,
+      KyHieu: cheDoNghi.value,
       QuanLy: ngduyet
     }
   };
