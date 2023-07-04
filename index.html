@@ -4,7 +4,7 @@
     <title>Đăng ký nghỉ SongLam</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="./src/styles.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+    <meta name="viewport" content="width=device-width, initial-scale=0.85">
   </head>
   <body>
     <!-- bảng chào mừng -->
@@ -46,18 +46,18 @@
         <input class="SoGioPhut" id="SoGioPhutID" type="text" value="" disabled size = "7"/>
         <br>
         <select class="cheDoNghi">
-          <option value="Nghỉ phép">Nghỉ phép</option>
-          <option value="Có lý do, nghỉ không lương">Có lý do, nghỉ không lương</option>
-          <option value="Nghỉ bảo hiểm">Nghỉ bảo hiểm</option>
-          <option value="Nghỉ con nhỏ">Nghỉ con nhỏ</option>
-          <option value="Nghỉ thai trên 7 tháng">Nghỉ thai trên 7 tháng</option>
-          <option value="Nghỉ ma chay">Nghỉ ma chay</option>
-          <option value="Nghỉ cưới">Nghỉ cưới</option>
-          <option value="Nghỉ đặc biệt">Nghỉ đặc biệt</option>
-          <option value="Nghỉ thai sản">Nghỉ thai sản</option>
-          <option value="Doanh Nghiệp">Doanh Nghiệp</option>
-          <option value="Đi muộn">Đi muộn</option>
-          <option value="Về sớm">Về sớm</option>
+          <option value="P">Nghỉ phép</option>
+          <option value="NC">Có lý do, nghỉ không lương</option>
+          <option value="BH">Nghỉ bảo hiểm</option>
+          <option value="CN">Nghỉ con nhỏ</option>
+          <option value="M7">Nghỉ thai trên 7 tháng</option>
+          <option value="TM">Nghỉ ma chay</option>
+          <option value="KH">Nghỉ cưới</option>
+          <option value="ĐB">Nghỉ đặc biệt</option>
+          <option value="TS">Nghỉ thai sản</option>
+          <option value="DN">Doanh Nghiệp</option>
+          <option value="M">Đi muộn</option>
+          <option value="S">Về sớm</option>
         </select>
         <br>
         <input class="ghiChu" type="text" placeholder="Ghi chú" size = "22" />
@@ -82,7 +82,7 @@
           <h1 class="tieude">KIỂM TRA KẾT QUẢ ĐĂNG KÝ</h1>
           <div>
             <label class="noteDate">Nhập ngày bắt đầu nghỉ</label><br />
-            <div>
+          <div style="display:flex; width: 377">
             <input
               class="inputbox"
               type="text"
@@ -93,7 +93,6 @@
             <input type="date" id="mydate" class="inputbox" />
             <button id="btn">Xem thông tin</button><br />
           </div>
-            <br />
       </div>
       <div>
         <!-- <p>trả ra kết quả đăng ký</p> -->
