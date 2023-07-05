@@ -149,8 +149,8 @@ button:hover:after {
   background-color: rgb(255, 255, 219);
 }
 .label {
-  font-size: 13px;
-  color: darkgreen;
+  font-size: 14px;
+  color: darkcyan;
   margin-left: 25px;
 }
 .checkTime {
