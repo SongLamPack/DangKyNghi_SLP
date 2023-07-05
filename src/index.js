@@ -277,15 +277,21 @@ function tinh_so_gio() {
   var tgNghi12 = new Date(`0000-01-01 12:00`);
   var tgNghi13 = new Date(`0000-01-01 13:00`);
   var tgNghi00 = new Date(`0000-01-01 00:00`);
-  var tgNghi01 = new Date(`0000-01-01 00:01`);
+  var tgNghi01 = new Date(`0000-01-01 01:00`);
   var tgNghi18 = new Date(`0000-01-01 18:00`);
   var phutgiam1 = 0;
   var phutgiam2 = 0;
   if (tgTu <= tgNghi13 && tgDen >= tgNghi12) {
-    phutgiam1 = Math.min(60, ((((tgDen - tgTu) / 60000) % 1440) + 1440) % 1440);
+    phutgiam1 = Math.min(
+      60,
+      ((((Math.min(tgDen, tgNghi13) - tgTu) / 60000) % 1440) + 1440) % 1440
+    );
   }
   if ((tgTu <= tgNghi01 || tgTu >= tgNghi18) && tgDen >= tgNghi00) {
-    phutgiam2 = Math.min(60, ((((tgDen - tgTu) / 60000) % 1440) + 1440) % 1440);
+    phutgiam2 = Math.min(
+      60,
+      ((((Math.min(tgDen, tgNghi01) - tgTu) / 60000) % 1440) + 1440) % 1440
+    );
   }
   var phuttamtinh = (tgDen - tgTu) / 60000;
   var soPhut = (((phuttamtinh % 1440) + 1440) % 1440) - phutgiam1 - phutgiam2;
