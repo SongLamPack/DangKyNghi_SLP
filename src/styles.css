@@ -162,7 +162,7 @@ button:hover:after {
   border-style: ridge;
 }
 
-.menu li{
+.menu li {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -171,7 +171,7 @@ button:hover:after {
   background-color: #f3f3f3;
   float: left;
   display: block;
-  color:green;
+  color: #666;
   text-align: center;
   padding: 6px 5px;
   font-size: 14px;
