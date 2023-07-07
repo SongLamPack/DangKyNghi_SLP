@@ -12,6 +12,10 @@ const dateInput = document.getElementById("mydate");
 const resultEle = document.getElementById("result");
 const modal = document.querySelector(".modal");
 
+// lấy thông tin nhân sự khi truy cập (đặt id thẻ div đầu tiên là loadpage)
+// const load = document.getElementById("loadpage");
+// document.addEventListener("DOMContentLoaded", fetchDs());
+
 function render(data) {
   var innerHtml = "";
   for (var i = 1; i < data.length; i++) {
@@ -128,50 +132,60 @@ function displayPg(pg) {
   pg.classList.remove("hidden");
 }
 
-showDkBtn.addEventListener("click", () => {
-  if (dsns.length === 0) {
-    fetchDs();
+const listItems = document.querySelectorAll(".menu li");
+// Gắn sự kiện 'click' cho mỗi mục <li>
+listItems.forEach((item) => {
+  item.addEventListener("click", function () {
+    var pgname = this.getAttribute("value");
+    if (pgname === "dangkypage") {
+      fetchDs();
+    }
+    var pgclick = document.getElementById(pgname);
+    if (pgclick !== null) {
+      listItems.forEach((li) => {
+        // Xóa class 'selected' khỏi tất cả các mục <li> khác
+        li.classList.remove("active");
+        var pgname = li.getAttribute("value");
+        var pg = document.getElementById(pgname);
+        try {
+          pg.classList.add("hidden");
+        } catch {}
+      });
+      // Thêm class 'selected' cho mục <li> vừa nhấp vào
+      pgclick.classList.remove("hidden");
+      this.classList.add("active");
+    }
+  });
+});
+
+function fetchDs() {
+  if (dsns.length == 0) {
+    let submitData = {
+      type: "dangky"
+    };
+    console.log("đang lấy danh sách nhân sự");
+    modal.classList.add("display");
+    fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify(submitData) // p data type must match "Content-Type" header
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        dsns = [...data];
+        modal.classList.remove("display");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        modal.classList.remove("display");
+        alert("Không tìm thấy cơ sở dữ liệu nhân sự, vui lòng kiểm tra lại");
+      });
   }
-  displayPg(dkPg);
-});
-showXemBtn.addEventListener("click", () => {
-  displayPg(xemPg);
-});
-
-backBtns.forEach((back) =>
-  back.addEventListener("click", () => {
-    displayPg(welcomePg);
-  })
-);
-
-// fetch dsns
-
-const fetchDs = (e) => {
-  let submitData = {
-    type: "dangky"
-  };
-
-  modal.classList.add("display");
-  fetch(URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8"
-    },
-    body: JSON.stringify(submitData) // p data type must match "Content-Type" header
-  })
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      dsns = [...data];
-      modal.classList.remove("display");
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      modal.classList.remove("display");
-      alert("Không tìm thấy cơ sở dữ liệu nhân sự, vui lòng kiểm tra lại");
-    });
-};
+}
 
 // xem ds
 
@@ -357,11 +371,10 @@ btnGui.addEventListener("click", (e) => {
   }
 
   var sogiophut = soGioPhutIP.value.split(" ");
-  console.log(sogiophut);
-  var SoNgayNghi =
-    parseInt(sogiophut[0]) > 0
-      ? Math.min(1, (parseInt(sogiophut[0]) + parseInt(sogiophut[2]) / 60) / 8)
-      : totalDays;
+  // console.log(sogiophut);
+  var SoNgayNghi = checkTimeIp.checked
+    ? Math.min(1, (parseInt(sogiophut[0]) + parseInt(sogiophut[2]) / 60) / 8)
+    : totalDays;
 
   SoNgayNghi = Number.parseFloat(SoNgayNghi.toFixed(3));
   let submitData = {
@@ -383,7 +396,7 @@ btnGui.addEventListener("click", (e) => {
     }
   };
   modal.classList.add("display");
-  console.log(submitData);
+  // console.log(submitData);
   fetch(URL, {
     method: "POST",
     headers: {
@@ -395,7 +408,7 @@ btnGui.addEventListener("click", (e) => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       modal.classList.remove("display");
       if (data == true) {
         alert(
