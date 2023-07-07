@@ -322,7 +322,8 @@ function tinh_so_gio() {
   console.log(phutgiam2);
   var phuttamtinh = (tgDen - tgTu) / 60000;
   var soPhut = (((phuttamtinh % 1440) + 1440) % 1440) - phutgiam1 - phutgiam2;
-  soGioPhutIP.value = `${Math.floor(soPhut / 60)} giờ ${soPhut % 60} ph`;
+  soGioPhutIP.value =soPhut;
+  // soGioPhutIP.value = `${Math.floor(soPhut / 60)} giờ ${soPhut % 60} ph`;
 }
 
 //gui dang ky
