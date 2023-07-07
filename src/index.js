@@ -316,7 +316,8 @@ function tinh_so_gio() {
         1440
     );
   }
-  soGioPhutIP.value =phutgiam1 + "_" + phutgiam2;
+  soGioPhutIP.value = phutgiam1;
+  tenIp.value = phutgiam2;
   var phuttamtinh = (tgDen - tgTu) / 60000;
   var soPhut = (((phuttamtinh % 1440) + 1440) % 1440) - phutgiam1 - phutgiam2;
   // soGioPhutIP.value =soPhut;
