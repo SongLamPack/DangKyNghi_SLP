@@ -304,9 +304,7 @@ function tinh_so_gio() {
         1440
     );
   }
-  console.log(tgTu <= tgNghi01);
-  console.log(tgTu >= tgNghi18);
-  console.log(tgDen >= tgNghi00);
+
 
   if ((tgTu <= tgNghi01 || tgTu >= tgNghi18) && tgDen >= tgNghi00) {
     phutgiam2 = Math.min(
@@ -318,11 +316,10 @@ function tinh_so_gio() {
         1440
     );
   }
-  console.log(phutgiam1);
-  console.log(phutgiam2);
+  soGioPhutIP.value =phutgiam1 + "_" + phutgiam2;
   var phuttamtinh = (tgDen - tgTu) / 60000;
   var soPhut = (((phuttamtinh % 1440) + 1440) % 1440) - phutgiam1 - phutgiam2;
-  soGioPhutIP.value =soPhut;
+  // soGioPhutIP.value =soPhut;
   // soGioPhutIP.value = `${Math.floor(soPhut / 60)} giờ ${soPhut % 60} ph`;
 }
 
