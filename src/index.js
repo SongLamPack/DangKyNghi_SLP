@@ -287,12 +287,19 @@ function tinh_so_gio() {
   var nghitu = nghiTuIp.value;
   var nghiden = nghiDenIp.value;
   var tgTu = new Date(`0000-01-01 ${nghitu}`);
+  alert("Thời gian từ " + tgTu)
   var tgDen = new Date(`0000-01-01 ${nghiden}`);
+  alert("Thời gian đến " + tgDen)
   var tgNghi12 = new Date(`0000-01-01 12:00`);
+  alert("Thời gian nghỉ 12 " + tgNghi12)
   var tgNghi13 = new Date(`0000-01-01 13:00`);
+  alert("Thời gian nghỉ 13 " + tgNghi13)
   var tgNghi00 = new Date(`0000-01-01 00:00`);
+  alert("Thời gian nghỉ 00 " + tgNghi00)
   var tgNghi01 = new Date(`0000-01-01 01:00`);
+  alert("Thời gian nghỉ 01 " + tgNghi01)
   var tgNghi18 = new Date(`0000-01-01 18:00`);
+  alert("Thời gian nghỉ 18 " + tgNghi18)
   var phutgiam1 = 0;
   var phutgiam2 = 0;
   if (tgTu <= tgNghi13 && tgDen >= tgNghi12) {
@@ -304,7 +311,7 @@ function tinh_so_gio() {
         1440
     );
   }
-
+alert("Số phút giảm nghỉ trưa " + phutgiam1)
 
   if ((tgTu <= tgNghi01 || tgTu >= tgNghi18) && tgDen >= tgNghi00) {
     phutgiam2 = Math.min(
@@ -316,12 +323,15 @@ function tinh_so_gio() {
         1440
     );
   }
-  soGioPhutIP.value = phutgiam1;
-  tenIp.value = phutgiam2;
+  alert("Số phút giảm nghỉ đêm " + phutgiam2)
+  
   var phuttamtinh = (tgDen - tgTu) / 60000;
+  alert("Số phút tạm tính " + phuttamtinh)
+  
   var soPhut = (((phuttamtinh % 1440) + 1440) % 1440) - phutgiam1 - phutgiam2;
   // soGioPhutIP.value =soPhut;
-  // soGioPhutIP.value = `${Math.floor(soPhut / 60)} giờ ${soPhut % 60} ph`;
+  soGioPhutIP.value = `${Math.floor(soPhut / 60)} giờ ${soPhut % 60} ph`;
+  alert("Số phút cuối cùng " + soPhut)
 }
 
 //gui dang ky
