@@ -298,15 +298,28 @@ function tinh_so_gio() {
   if (tgTu <= tgNghi13 && tgDen >= tgNghi12) {
     phutgiam1 = Math.min(
       60,
-      ((((Math.min(tgDen, tgNghi13) - tgTu) / 60000) % 1440) + 1440) % 1440
+      ((((Math.min(tgDen, tgNghi13) - Math.max(tgTu, tgNghi12)) / 60000) %
+        1440) +
+        1440) %
+        1440
     );
   }
+  console.log(tgTu <= tgNghi01);
+  console.log(tgTu >= tgNghi18);
+  console.log(tgDen >= tgNghi00);
+
   if ((tgTu <= tgNghi01 || tgTu >= tgNghi18) && tgDen >= tgNghi00) {
     phutgiam2 = Math.min(
       60,
-      ((((Math.min(tgDen, tgNghi01) - tgTu) / 60000) % 1440) + 1440) % 1440
+      ((((Math.min(tgDen, tgNghi01) - (tgTu >= tgNghi18 ? tgNghi00 : tgTu)) /
+        60000) %
+        1440) +
+        1440) %
+        1440
     );
   }
+  console.log(phutgiam1);
+  console.log(phutgiam2);
   var phuttamtinh = (tgDen - tgTu) / 60000;
   var soPhut = (((phuttamtinh % 1440) + 1440) % 1440) - phutgiam1 - phutgiam2;
   soGioPhutIP.value = `${Math.floor(soPhut / 60)} giờ ${soPhut % 60} ph`;
@@ -395,37 +408,44 @@ btnGui.addEventListener("click", (e) => {
       QuanLy: ngduyet
     }
   };
-  modal.classList.add("display");
-  // console.log(submitData);
-  fetch(URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8"
-    },
-    body: JSON.stringify(submitData) // p data type must match "Content-Type" header
-  })
-    .then((response) => {
-      return response.json();
+  let qs = confirm(
+    `XÁC NHẬN! \nGửi đăng ký ${
+      cheDoNghi.options[cheDoNghi.selectedIndex].textContent
+    } ${SoNgayNghi} ngày`
+  );
+  if (qs == true) {
+    modal.classList.add("display");
+    // console.log(submitData);
+    fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify(submitData) // p data type must match "Content-Type" header
     })
-    .then((data) => {
-      // console.log(data);
-      modal.classList.remove("display");
-      if (data == true) {
-        alert(
-          "✅ Đăng ký thành công! Vui lòng liên hệ với quản lý để được xác nhận"
-        );
-        manvIp.value = "";
-        tuNgayIp.value = "";
-        denNgayIp.value = "";
-        checkTimeIp.checked = false;
-        ghiChu.value = "";
-      } else {
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        // console.log(data);
+        modal.classList.remove("display");
+        if (data == true) {
+          alert(
+            "✅ Đăng ký thành công! Vui lòng liên hệ với quản lý để được xác nhận"
+          );
+          manvIp.value = "";
+          tuNgayIp.value = "";
+          denNgayIp.value = "";
+          checkTimeIp.checked = false;
+          ghiChu.value = "";
+        } else {
+          alert("❌ Đăng ký không thành công ⚠ Vui lòng thử lại");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        modal.classList.remove("display");
         alert("❌ Đăng ký không thành công ⚠ Vui lòng thử lại");
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      modal.classList.remove("display");
-      alert("❌ Đăng ký không thành công ⚠ Vui lòng thử lại");
-    });
+      });
+  }
 });
