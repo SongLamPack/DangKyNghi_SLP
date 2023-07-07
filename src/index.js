@@ -414,6 +414,11 @@ btnGui.addEventListener("click", (e) => {
         alert(
           "✅ Đăng ký thành công! Vui lòng liên hệ với quản lý để được xác nhận"
         );
+        manvIp.value = "";
+        tuNgayIp.value = "";
+        denNgayIp.value = "";
+        checkTimeIp.checked = false;
+        ghiChu.value = "";
       } else {
         alert("❌ Đăng ký không thành công ⚠ Vui lòng thử lại");
       }
