@@ -286,7 +286,7 @@ function tinh_so_gio() {
   // }
   var nghitu = nghiTuIp.value;
   var nghiden = nghiDenIp.value;
-  var tgTu = new Date(`2000-01-01 ${nghitu}:00`);
+  var tgTu = new Date(`2000-01-01`);
   alert("Thời gian từ " + tgTu)
   var tgDen = new Date(`2000-01-01 ${nghiden}:00`);
   alert("Thời gian đến " + tgDen)
