@@ -284,6 +284,9 @@ function tinh_so_gio() {
   //   var soGio = parseInt(hmax[0]) - parseInt(hmin[0]) - 1;
   //   var soPhut = 60 + parseInt(hmax[1]) - parseInt(hmin[1]);
   // }
+var startDate = new Date(tuNgayIp.value)
+  alert("Thời gian từ " + tuNgayIp.value)
+  alert("Thời gian từ " + startDate)
   var nghitu = nghiTuIp.value;
   var nghiden = nghiDenIp.value;
   var tgTu = new Date(`2000-01-01`);
