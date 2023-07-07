@@ -4,27 +4,28 @@
     <title>Đăng ký nghỉ SongLam</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="./src/styles.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=0.85">
+    <meta name="viewport" content="width=device-width, initial-scale=0.95">
   </head>
   <body>
-    <!-- bảng chào mừng -->
-    <section id="welcome">
-      <img
-        src="http://drive.google.com/uc?export=view&id=1i0G3-DqnwstwRDUSVZdgFT4buuw_jua2"
-        class="logo"
-        alt="SongLamPack"
-      />
-      <h2 class="tieude">ĐĂNG KÝ NGÀY NGHỈ</h2>
-      <a id="quytrinh" target="_blank" href="https://docs.google.com/spreadsheets/d/1PdBOUfB5gV6z2M2ipeqRnDVffmIHBBkgdSJ5HL-O9gw/edit#gid=651362643">Quy trình đăng ký nghỉ</a>
-      <br/><br/>
-      <button id="showDk">Đăng ký nghỉ</button>
-      <button id="showXem">Tra cứu thông tin</button>
-      <!-- <h4 class="noteDate">Bản thử nghiệm</h4> -->
-    </section>
-    <hr />
+      <!-- <script src="src/index.js"></script> -->
+      <div style="display: flex;text-align: center">
+          <ul class="menu" style="margin:0;padding:0">
+              <li class="active" value="xempage">Kết quả duyệt</li>
+              <li value="dangkypage">Đăng ký mới</li>
+              <li><a href="https://docs.google.com/spreadsheets/d/1PdBOUfB5gV6z2M2ipeqRnDVffmIHBBkgdSJ5HL-O9gw/edit#gid=651362643"
+                target="_blank" style="text-decoration: none;color:darkgreen">
+                Quy trình<a></li>
+                <li>_____</li>
+            </ul>
+                <img
+                src="http://drive.google.com/uc?export=view&id=1i0G3-DqnwstwRDUSVZdgFT4buuw_jua2"
+                class="logo"
+                alt="SongLamPack"
+                style="width: 45px; height: 45px;"
+              />
+        </div>
     <!-- đăng ký nghỉ -->
     <section id="dangkypage" class="hidden">
-      <button class="back">Home</button>
       <h1 class="tieude">ĐĂNG KÝ MỚI</h1>
       <div class ="bodydangky">
         <input class="maNV" type="text" placeholder="Mã nhân viên" size = "11"/>
@@ -77,8 +78,7 @@
       </div>
     </section>
 
-    <section id="xempage" class="hidden">
-      <button class="back">Home</button>
+    <section id="xempage">
       <div>
           <h1 class="tieude">KIỂM TRA KẾT QUẢ ĐĂNG KÝ</h1>
           <div>
@@ -100,6 +100,11 @@
       <div id="result"></div>
       </div>
     </section>
+        <!-- Tra mã nhân viên -->
+    <section id="pgtranv" class="hidden">
+        <h2 style="color:teal">TRA CỨU MÃ NHÂN VIÊN</h2>
+        <p style="text-align:center;color: gray">Tính năng đang xây dựng...</p>
+    </section> 
     <div class="modal"><h2>Đang chạy...</h2></div>
     <script src="src/index.js"></script>
   </body>
