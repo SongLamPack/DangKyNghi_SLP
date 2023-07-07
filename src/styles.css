@@ -161,3 +161,29 @@ button:hover:after {
 .render {
   border-style: ridge;
 }
+
+.menu li{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+  float: left;
+  display: block;
+  color:darkgreen;
+  text-align: center;
+  padding: 6px 5px;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.menu li:hover:not(.active) {
+  background-color: #ddd;
+}
+
+.menu .active {
+  color: white;
+  background-color: #4caf50;
+}
