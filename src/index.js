@@ -383,7 +383,9 @@ btnGui.addEventListener("click", (e) => {
     }
   }
   var startDate = new Date(tuNgayIp.value);
+  alert("startDate " + startDate)
   var endDate = new Date(denNgayIp.value);
+  alert("endDate " + endDate)
   var totalDays = 0;
   while (startDate <= endDate) {
     if (startDate.getDay() !== 0) {
