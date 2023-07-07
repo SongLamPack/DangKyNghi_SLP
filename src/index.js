@@ -286,19 +286,19 @@ function tinh_so_gio() {
   // }
   var nghitu = nghiTuIp.value;
   var nghiden = nghiDenIp.value;
-  var tgTu = new Date(`2000-01-01 ${nghitu}`);
+  var tgTu = new Date(`2000-01-01 ${nghitu}:00`);
   alert("Thời gian từ " + tgTu)
-  var tgDen = new Date(`2000-01-01 ${nghiden}`);
+  var tgDen = new Date(`2000-01-01 ${nghiden}:00`);
   alert("Thời gian đến " + tgDen)
-  var tgNghi12 = new Date(`2000-01-01 12:00`);
+  var tgNghi12 = new Date(`2000-01-01 12:00:00`);
   alert("Thời gian nghỉ 12 " + tgNghi12)
-  var tgNghi13 = new Date(`2000-01-01 13:00`);
+  var tgNghi13 = new Date(`2000-01-01 13:00:00`);
   alert("Thời gian nghỉ 13 " + tgNghi13)
-  var tgNghi00 = new Date(`2000-01-01 00:00`);
+  var tgNghi00 = new Date(`2000-01-01 00:00:00`);
   alert("Thời gian nghỉ 00 " + tgNghi00)
-  var tgNghi01 = new Date(`2000-01-01 01:00`);
+  var tgNghi01 = new Date(`2000-01-01 01:00:00`);
   alert("Thời gian nghỉ 01 " + tgNghi01)
-  var tgNghi18 = new Date(`2000-01-01 18:00`);
+  var tgNghi18 = new Date(`2000-01-01 18:00:00`);
   alert("Thời gian nghỉ 18 " + tgNghi18)
   var phutgiam1 = 0;
   var phutgiam2 = 0;
@@ -383,9 +383,7 @@ btnGui.addEventListener("click", (e) => {
     }
   }
   var startDate = new Date(tuNgayIp.value);
-  alert("startDate " + startDate)
   var endDate = new Date(denNgayIp.value);
-  alert("endDate " + endDate)
   var totalDays = 0;
   while (startDate <= endDate) {
     if (startDate.getDay() !== 0) {
