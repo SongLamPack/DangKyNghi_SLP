@@ -19,8 +19,14 @@ const modal = document.querySelector(".modal");
 function render(data) {
   var innerHtml = "";
   for (var i = 1; i < data.length; i++) {
+    var classColor =
+      data[i].KetQua === 1
+        ? "dcduyet"
+        : data[i].KetQua === -1
+        ? "koduyet"
+        : "dgcho";
     innerHtml += `
-    <div class="render" style="padding:20px">
+    <div class="render ${classColor}" style="padding:20px">
         <h2 class ="${
           data[i].KetQua === 1 ? "done" : data[i].KetQua === -1 ? "fal" : "wait"
         }" style="text-align:center; margin:0; padding-bottom:20px"> ${
