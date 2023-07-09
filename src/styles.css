@@ -173,7 +173,7 @@ button:hover:after {
   display: block;
   color: #666;
   text-align: center;
-  padding: 6px 5px;
+  padding: 6px 10px;
   font-size: 14px;
   text-decoration: none;
   cursor: pointer;
