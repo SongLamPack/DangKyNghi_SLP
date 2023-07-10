@@ -36,8 +36,8 @@ function render(data) {
         ? "KHÔNG ĐƯỢC DUYỆT"
         : "ĐANG CHỜ"
     } </h2>
-        <p>${data[0].MaNV}: ${data[i].MaNV}</p>
-        <p>${data[0].HoTen}: ${data[i].HoTen}</p>
+        <p>${data[0].MaNV}: <b>${data[i].MaNV}</b></p>
+        <p>${data[0].HoTen}: <b>${data[i].HoTen}</b></p>
         <p>${data[0].BoPhan}: ${data[i].BoPhan}</p>
         <p>${data[0].TuNgay}: ${data[i].TuNgay}</p>
         <p>${data[0].DenNgay}: ${data[i].DenNgay}</p>
@@ -52,21 +52,23 @@ function render(data) {
             : data[i].QLDuyet === "Không"
             ? "fal"
             : "wait"
-        }">${data[0].QuanLy}: ${data[i].QuanLy} [${data[i].QLDuyet}]</p>
+        }">${data[0].QuanLy}: <b>${data[i].QuanLy}</b> [${data[i].QLDuyet}]</p>
         <p class="${
           data[i].TBPDuyet === "Duyệt"
             ? "done"
             : data[i].TBPDuyet === "Không"
             ? "fal"
             : "wait"
-        }">${data[0].TruongBP}: ${data[i].TruongBP} [${data[i].TBPDuyet}]</p>
+        }">${data[0].TruongBP}: <b>${data[i].TruongBP}</b> [${
+      data[i].TBPDuyet
+    }]</p>
         <p class="${
           data[i].KHDuyet === "Duyệt"
             ? "done"
             : data[i].KHDuyet === "Không"
             ? "fal"
             : "wait"
-        }">${data[0].KHSX}: ${data[i].KHSX} [${data[i].KHDuyet}]</p>
+        }">${data[0].KHSX}: <b>${data[i].KHSX}</b> [${data[i].KHDuyet}]</p>
         <p>${data[0].LyDo}: ${data[i].LyDo}</p>
     </div>
     <br>
