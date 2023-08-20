@@ -300,6 +300,7 @@ function tinh_so_gio() {
   var tgNghi13 = new Date(`2000-01-01T13:00:00`);
   var tgNghi00 = new Date(`2000-01-01T00:00:00`);
   var tgNghi01 = new Date(`2000-01-01T01:00:00`);
+  var tgNghi07 = new Date(`2000-01-01T07:00:00`);
   var tgNghi18 = new Date(`2000-01-01T18:00:00`);
   var phutgiam1 = 0;
   var phutgiam2 = 0;
@@ -313,7 +314,7 @@ function tinh_so_gio() {
     );
   }
 
-  if ((tgTu <= tgNghi01 || tgTu >= tgNghi18) && tgDen >= tgNghi00) {
+  if ((tgTu <= tgNghi01 || tgTu >= tgNghi18) && tgDen >= tgNghi00 && tgDen <= tgNghi07) {
     phutgiam2 = Math.min(
       60,
       ((((Math.min(tgDen, tgNghi01) - (tgTu >= tgNghi18 ? tgNghi00 : tgTu)) /
