@@ -83,7 +83,7 @@ btn.addEventListener("click", (e) => {
   var date = dateInput.value; // new Date(+namInput.value, +thangInput.value, +ngayInput.value);
   var idate = parseInt(date.split("-").join(""));
   if (name === "") {
-    alert("Vui lòng nhập mã nhân viên");
+    alert("⚠️ Vui lòng nhập mã nhân viên");
     return;
   }
 
@@ -190,7 +190,7 @@ function fetchDs() {
       .catch((error) => {
         console.error("Error:", error);
         modal.classList.remove("display");
-        alert("Không tìm thấy cơ sở dữ liệu nhân sự, vui lòng kiểm tra lại");
+        alert("⚠️ Không tìm thấy cơ sở dữ liệu nhân sự, vui lòng kiểm tra lại");
       });
   }
 }
@@ -346,22 +346,22 @@ btnGui.addEventListener("click", (e) => {
     var ngduyet = "";
   }
   if (manvIp.value === "") {
-    alert("Vui lòng nhập đầy đủ thông tin");
+    alert("⚠️ Vui lòng nhập mã nhân viên");
     return;
   }
   if (tenIp.value === "" || tenIp.value === "không tìm thấy") {
-    alert("Mã nhân viên chưa đúng, vui lòng kiểm tra lại");
+    alert("⚠️ Mã nhân viên chưa đúng, vui lòng kiểm tra lại");
     return;
   }
   if (tuNgayIp.value === "" || denNgayIp.value === "") {
-    alert("Vui lòng nhập đầy đủ ngày tháng");
+    alert("⚠️ Vui lòng nhập đầy đủ ngày tháng");
     return;
   }
   var tungay = parseInt(tuNgayIp.value.toString().split("-").join(""));
   var denngay = parseInt(denNgayIp.value.toString().split("-").join(""));
   if (tungay > denngay) {
     alert(
-      "Ngày tháng không hợp lệ, ngày bắt đầu không được nhỏ hơn ngày kết thúc"
+      "⚠️ Ngày tháng không hợp lệ, ngày bắt đầu không được nhỏ hơn ngày kết thúc"
     );
     return;
   }
@@ -376,18 +376,18 @@ btnGui.addEventListener("click", (e) => {
   console.log(ngaytoithieu);
   console.log(tungay);
   if (tungay < parseInt(ngaytoithieu)) {
-    alert(`Không thể đăng ký ngày nghỉ trước ngày ${ingay} `);
+    alert(`⚠️ Không thể đăng ký ngày nghỉ trước ngày ${ingay} `);
     return;
   }
   
   if (checkTimeIp.checked) {
     if (nghiTuIp.value === "" || nghiDenIp.value === "") {
-      alert("Đăng ký nghỉ dưới 01 ngày, vui lòng nhập khoảng thời gian");
+      alert("⚠️ Đăng ký nghỉ dưới 01 ngày, vui lòng nhập khoảng thời gian");
       return;
     } else {
       if (parseInt(soGioPhutIP.value) >= 12) {
         alert(
-          "Đăng ký nghỉ dưới 01 ngày. Khoảng thời gian không hợp lệ, thời gian nghỉ vượt quá 12 giờ"
+          "⚠️ Đăng ký nghỉ dưới 01 ngày. Khoảng thời gian không hợp lệ, thời gian nghỉ vượt quá 12 giờ"
         );
         return;
       }
