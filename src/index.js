@@ -365,6 +365,21 @@ btnGui.addEventListener("click", (e) => {
     );
     return;
   }
+  var ngaytoithieu = `${itime.getFullYear()}${String(
+    itime.getMonth() + 1
+  ).padStart(2, "0")}${String(itime.getDate() - 1).padStart(2, "0")}`;
+  console.log(ngaytoithieu);
+  console.log(tungay);
+  var ingay = `${String(itime.getDate() - 1).padStart(2, "0")}/${String(
+    itime.getMonth() + 1
+  ).padStart(2, "0")}/${itime.getFullYear()}`;
+  console.log(ngaytoithieu);
+  console.log(tungay);
+  if (tungay < parseInt(ngaytoithieu)) {
+    alert(`Không thể đăng ký ngày nghỉ trước ngày ${ingay} `);
+    return;
+  }
+  
   if (checkTimeIp.checked) {
     if (nghiTuIp.value === "" || nghiDenIp.value === "") {
       alert("Đăng ký nghỉ dưới 01 ngày, vui lòng nhập khoảng thời gian");
