@@ -365,14 +365,16 @@ btnGui.addEventListener("click", (e) => {
     );
     return;
   }
-  var ngaytoithieu = `${itime.getFullYear()}${String(
-    itime.getMonth() + 1
-  ).padStart(2, "0")}${String(itime.getDate() - 1).padStart(2, "0")}`;
+  var datemin = new Date(2023, 8, 1);
+  //var datemin = itime
+  var ngaytoithieu = `${datemin.getFullYear()}${String(
+    datemin.getMonth() + 1
+  ).padStart(2, "0")}${String(datemin.getDate() - 1).padStart(2, "0")}`;
   console.log(ngaytoithieu);
   console.log(tungay);
-  var ingay = `${String(itime.getDate() - 1).padStart(2, "0")}/${String(
-    itime.getMonth() + 1
-  ).padStart(2, "0")}/${itime.getFullYear()}`;
+  var ingay = `${String(datemin.getDate() - 1).padStart(2, "0")}/${String(
+    datemin.getMonth() + 1
+  ).padStart(2, "0")}/${datemin.getFullYear()}`;
   console.log(ngaytoithieu);
   console.log(tungay);
   if (tungay < parseInt(ngaytoithieu)) {
