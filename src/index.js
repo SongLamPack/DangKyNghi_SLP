@@ -365,7 +365,7 @@ btnGui.addEventListener("click", (e) => {
     );
     return;
   }
-  var datemin = new Date(2023, 9, 22);
+  var datemin = new Date(2023, 8, 22);
   // var datemin = itime
   var ngaytoithieu = `${datemin.getFullYear()}${String(
     datemin.getMonth() + 1
