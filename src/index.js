@@ -185,12 +185,23 @@ function fetchDs() {
       })
       .then((data) => {
         dsns = [...data];
+        var datemin = dsns[0].Today;
+        datemin = datemin.toString().substr(0, 10);
+        var ngaytoithieu = datemin.toString().split("-").join("");
+        console.log(ngaytoithieu);
+        var ingay =
+          ngaytoithieu.substr(6, 2) +
+          "/" +
+          ngaytoithieu.substr(4, 2) +
+          "/" +
+          ngaytoithieu.substr(0, 4);
+        console.log(ingay);
         modal.classList.remove("display");
       })
       .catch((error) => {
         console.error("Error:", error);
         modal.classList.remove("display");
-        alert("⚠️ Không tìm thấy cơ sở dữ liệu nhân sự, vui lòng kiểm tra lại");
+        alert("Không tìm thấy cơ sở dữ liệu nhân sự, vui lòng kiểm tra lại");
       });
   }
 }
@@ -314,7 +325,11 @@ function tinh_so_gio() {
     );
   }
 
-  if ((tgTu <= tgNghi01 || tgTu >= tgNghi18) && tgDen >= tgNghi00 && tgDen <= tgNghi07) {
+  if (
+    (tgTu <= tgNghi01 || tgTu >= tgNghi18) &&
+    tgDen >= tgNghi00 &&
+    tgDen <= tgNghi07
+  ) {
     phutgiam2 = Math.min(
       60,
       ((((Math.min(tgDen, tgNghi01) - (tgTu >= tgNghi18 ? tgNghi00 : tgTu)) /
@@ -359,29 +374,35 @@ btnGui.addEventListener("click", (e) => {
   }
   var tungay = parseInt(tuNgayIp.value.toString().split("-").join(""));
   var denngay = parseInt(denNgayIp.value.toString().split("-").join(""));
+
   if (tungay > denngay) {
     alert(
       "⚠️ Ngày tháng không hợp lệ, ngày bắt đầu không được nhỏ hơn ngày kết thúc"
     );
     return;
   }
-  var datemin = new Date(2023, 8, 22);
-  // var datemin = itime
-  var ngaytoithieu = `${datemin.getFullYear()}${String(
-    datemin.getMonth() + 1
-  ).padStart(2, "0")}${String(datemin.getDate() - 1).padStart(2, "0")}`;
-  console.log(ngaytoithieu);
-  console.log(tungay);
-  var ingay = `${String(datemin.getDate() - 1).padStart(2, "0")}/${String(
-    datemin.getMonth() + 1
-  ).padStart(2, "0")}/${datemin.getFullYear()}`;
+  // var datemin = new Date(2023, 8, 1);
+  var datemin = dsns[0].Today;
+  datemin = datemin.toString().substr(0, 10);
+  var ngaytoithieu = datemin.toString().split("-").join("");
+  var ingay =
+    ngaytoithieu.substr(6, 2) +
+    "/" +
+    ngaytoithieu.substr(4, 2) +
+    "/" +
+    ngaytoithieu.substr(0, 4);
+  // var ngaytoithieu = `${datemin.getFullYear()}${String(
+  //   datemin.getMonth() + 1
+  // ).padStart(2, "0")}${String(datemin.getDate() - 1).padStart(2, "0")}`;
+  // var ingay = `${String(datemin.getDate() - 1).padStart(2, "0")}/${String(
+  //   datemin.getMonth() + 1
+  // ).padStart(2, "0")}/${datemin.getFullYear()}`;
   console.log(ngaytoithieu);
   console.log(tungay);
   if (tungay < parseInt(ngaytoithieu)) {
     alert(`⚠️ Không thể đăng ký ngày nghỉ trước ngày ${ingay} `);
     return;
   }
-  
   if (checkTimeIp.checked) {
     if (nghiTuIp.value === "" || nghiDenIp.value === "") {
       alert("⚠️ Đăng ký nghỉ dưới 01 ngày, vui lòng nhập khoảng thời gian");
